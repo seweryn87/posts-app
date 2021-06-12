@@ -14,7 +14,7 @@ export class PostsListComponent implements OnInit {
   constructor(
     private postsService: PostsService
   ) {
-    postsService.readPost().subscribe(
+    postsService.readPosts().subscribe(
       (posts: Post[]) => {
         this.posts = posts;
       }

@@ -1,5 +1,6 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Post } from 'src/app/model/post.model';
 
 @Component({
@@ -16,9 +17,17 @@ export class PostItemComponent implements OnInit {
     title: '',
   };
 
-  constructor() { }
+  @Input() showButton: boolean = true;
+  
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  public onShowPost(id: number): void {
+    this.router.navigate(['/','posts', id]);
   }
 
 }

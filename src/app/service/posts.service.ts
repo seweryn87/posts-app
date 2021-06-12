@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Post } from '../model/post.model';
 
+const BASE_URL = 'https://jsonplaceholder.typicode.com/posts'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -37,7 +39,11 @@ export class PostsService {
     return this.posts;
   }
 
-  public readPost(): Observable<Post[]> {
-    return this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
+  public readPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(BASE_URL);
+  }
+
+  public readPost(id: string): Observable<Post> {
+    return this.http.get<Post>(BASE_URL + '/' + id);
   }
 }
